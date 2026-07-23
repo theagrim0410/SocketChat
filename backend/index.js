@@ -19,14 +19,10 @@ app.use('/api/auth',authRouter);
 app.use('/api/message', messageRouter);
 app.use('/api/user', userRouter);
 
-app.get('/', (req, res) => {
-  res.send('ok beta');
-});
-
 app.use(express.static(path.join(__dirname, 'frontend/dist')));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
 server.listen(PORT, () => {
