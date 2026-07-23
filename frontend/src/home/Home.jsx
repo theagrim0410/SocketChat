@@ -1,5 +1,5 @@
 import MessageContainer from "./component/MessageContainer.jsx";
-import Sidebar from "./component/Sidebar.jsx";
+import Sidebar from "./component/SideBar.jsx";
 import "./Home.css";
 export default function Home() {
   return (
