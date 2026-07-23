@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+.profile-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-size: 400% 400%;
+  animation: bgMove 15s ease infinite;
+  overflow: hidden;
+}
+
+
+@keyframes bgMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.profile-card {
+  position: relative;
+  width: 430px;
+  padding: 45px;
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.14);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.2),
+    0 0 30px rgba(255, 255, 255, 0.1);
+
+  animation: card 1s ease;
+  transition: 0.4s;
+  z-index: 10;
+}
+
+.profile-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000000;
+  display: flex;
+  width: auto;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #2563eb;
+  margin-bottom: 20px;
+}
+
+.profile-info {
+  margin-top: 25px;
+}
+
+.profile-item {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.profile-item span {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.profile-item p {
+  margin-top: 5px;
+  padding: 10px;
+  background: #eef4ff;
+  border-radius: 8px;
+  color: #000;
+}

@@ -1,0 +1,543 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+.search-form {
+  display: flex;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sidebar {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  margin-right: 10px;
+  width: 25vh;
+}
+
+.search-form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4caf50;
+  color: white;
+  cursor: wait;
+  margin-right: 20px;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+/* Divider Line */
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #0003ff;
+  margin: 8px 0;
+}
+
+/* No User Found Container */
+.no-user-found {
+  width: 100%;
+  height: calc(100vh - 150px);
+  overflow-y: auto;
+}
+
+.no-user-found-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+/* Message when no chats are available */
+.msg {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 16px;
+  padding: 20px;
+}
+
+/* User Card */
+.user-card {
+  width: 100%;
+}
+
+/* Clickable User */
+.user-card2 {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  border-radius: 25px;
+  border: 2px solid #4f46e5;
+  margin-bottom: 15px;
+  margin-top: 6px;
+  margin-right: 24px;
+}
+
+.user-card2:hover {
+  background-color: #a884f6;
+}
+
+.avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Show dot only for online users */
+.avatar.online::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #22c55e;
+  border: 2px solid white;
+  border-radius: 50%;
+  bottom: 2px;
+  left: 36px; /* Adjust according to your profile picture size */
+  box-shadow: 0 0 6px #22c55e;
+}
+
+/* Profile Picture */
+.profile-pic2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4f46e5;
+}
+
+/* User Info */
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  margin-left: 12px;
+}
+
+/* User Name */
+.user-name {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Scrollbar */
+.no-user-found::-webkit-scrollbar {
+  width: 1px;
+}
+
+.no-user-found::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.no-user-found::-webkit-scrollbar-thumb {
+  background: #4f46e5;
+  border-radius: 10px;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #4f46e5;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.logout-container {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logout-btn {
+  width: 100%;
+  max-width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 12px 18px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+
+  background: #5844ef;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(239, 68, 68, 0.35);
+}
+
+.logout-btn:active {
+  transform: scale(0.97);
+}
+
+.logout-icon {
+  font-size: 24px;
+}
+
+@media (min-width: 1600px) {
+  .sidebar {
+    margin-top: 30px;
+  }
+
+  .search-form {
+    max-width: 500px;
+  }
+
+  .search-input {
+    padding: 14px;
+    font-size: 17px;
+  }
+
+  .search-form button {
+    padding: 14px 24px;
+    font-size: 16px;
+  }
+
+  .profile-pic {
+    width: 50px;
+    height: 50px;
+  }
+
+  .profile-pic2 {
+    width: 60px;
+    height: 60px;
+  }
+
+  .user-name {
+    font-size: 18px;
+  }
+
+  .logout-btn {
+    max-width: 260px;
+    font-size: 18px;
+  }
+
+  .logout-icon {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .search-form {
+    max-width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .user-card2 {
+    padding: 10px 14px;
+  }
+
+  .profile-pic2 {
+    width: 46px;
+    height: 46px;
+  }
+
+  .avatar.online::after {
+    left: 33px;
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    margin-top: 15px;
+  }
+
+  .search-form {
+    width: 100%;
+  }
+
+  .search-input {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .search-form button {
+    padding: 10px 16px;
+    margin-right: 0;
+  }
+
+  .user-card2 {
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .profile-pic {
+    width: 36px;
+    height: 36px;
+  }
+
+  .profile-pic2 {
+    width: 44px;
+    height: 44px;
+  }
+
+  .avatar.online::after {
+    width: 10px;
+    height: 10px;
+    left: 31px;
+  }
+
+  .user-name {
+    font-size: 14px;
+  }
+
+  .msg {
+    font-size: 15px;
+  }
+
+  .logout-btn {
+    max-width: 200px;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    max-width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-input {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .search-form button {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .no-user-found {
+    height: auto;
+    max-height: 60vh;
+  }
+
+  .user-card2 {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .profile-pic2 {
+    width: 42px;
+    height: 42px;
+  }
+
+  .avatar.online::after {
+    left: 29px;
+    bottom: 1px;
+  }
+
+  .user-info {
+    margin-left: 10px;
+  }
+
+  .user-name {
+    font-size: 14px;
+  }
+
+  .back-button {
+    width: 36px;
+    height: 36px;
+    margin-top: 10px;
+  }
+
+  .logout-container {
+    padding: 10px;
+  }
+
+  .logout-btn {
+    width: 100%;
+    max-width: 100%;
+    font-size: 15px;
+  }
+
+  .logout-icon {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    margin-top: 10px;
+  }
+
+  .search-input {
+    padding: 9px;
+    font-size: 14px;
+  }
+
+  .search-form button {
+    padding: 9px;
+    font-size: 14px;
+  }
+
+  .profile-pic {
+    width: 34px;
+    height: 34px;
+  }
+
+  .profile-pic2 {
+    width: 40px;
+    height: 40px;
+  }
+
+  .avatar.online::after {
+    width: 9px;
+    height: 9px;
+    left: 28px;
+  }
+
+  .user-card2 {
+    padding: 9px;
+    margin-bottom: 10px;
+  }
+
+  .user-info {
+    margin-left: 8px;
+  }
+
+  .user-name {
+    font-size: 13px;
+  }
+
+  .msg {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .logout-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .logout-icon {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .search-form {
+    gap: 8px;
+  }
+
+  .search-input {
+    font-size: 13px;
+  }
+
+  .search-form button {
+    font-size: 13px;
+  }
+
+  .profile-pic2 {
+    width: 36px;
+    height: 36px;
+  }
+
+  .avatar.online::after {
+    left: 25px;
+    width: 8px;
+    height: 8px;
+  }
+
+  .user-name {
+    font-size: 12px;
+  }
+
+  .logout-btn {
+    font-size: 13px;
+  }
+
+  .logout-icon {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 320px) {
+  .search-input {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .search-form button {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .profile-pic {
+    width: 30px;
+    height: 30px;
+  }
+
+  .profile-pic2 {
+    width: 32px;
+    height: 32px;
+  }
+
+  .avatar.online::after {
+    left: 22px;
+    width: 7px;
+    height: 7px;
+  }
+
+  .user-name {
+    font-size: 11px;
+  }
+
+  .logout-btn {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .logout-icon {
+    font-size: 16px;
+  }
+}
