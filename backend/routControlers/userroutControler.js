@@ -9,8 +9,8 @@ export const userRegister =async (req, res) =>{
         const user = await User.findOne({username , email});
         if(user) return res.status(500).send({success:false,message:"user already exist"});
         const hashedPassword = bcrypt.hashSync(password,10);
-        const profileBoy = profilepic || "https://api.dicebear.com/9.x/adventurer/svg?seed=${username}";
-        const profileGirl = profilepic || "https://api.dicebear.com/9.x/adventurer/svg?seed=${username}";
+        const profileBoy = profilepic || "https://api.dicebear.com/9.x/adventurer/svg?seed=${Math.floor(Math.random() * 1000)}";
+        const profileGirl = profilepic || "https://api.dicebear.com/9.x/adventurer/svg?seed=${Math.floor(Math.random() * 1000)}";
         const newUser = new User({
             fullname,
             username,

@@ -22,12 +22,8 @@ export default function AddFriend() {
 
   const isUserOnline = (userId) => onlineUsers.includes(userId);
 
-  const backToChatUsers = () => {
-    setSearchInput("");
-    setSearchUser([]);
-  };
-
   useEffect(() => {
+    fetchAllUsers();
     fetchFriends();
   }, []);
 
@@ -41,7 +37,7 @@ export default function AddFriend() {
         toast.info("No friends found");
         return;
       }
-      setSearchUser(data);
+      // setSearchUser(data);
       setFriends(data);
       // data is your friend list
       setFriendIds(data.map((friend) => friend._id));
@@ -50,6 +46,23 @@ export default function AddFriend() {
     }
   };
 
+  const backToChatUsers = () => {
+    setSearchInput("");
+    // setSearchUser([]);
+    fetchAllUsers();
+  };
+
+  const fetchAllUsers = async () => {
+    try {
+      const { data } = await axios.get("/api/user/all", {
+        withCredentials: true,
+      });
+
+      setSearchUser(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   // Search Users
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
@@ -71,7 +84,8 @@ export default function AddFriend() {
 
       if (!data || data.length === 0) {
         toast.info("No users found");
-        setSearchUser([]);
+        // setSearchUser([]);
+        fetchAllUsers();
       } else {
         setSearchUser(data);
       }
@@ -130,7 +144,9 @@ export default function AddFriend() {
     }
   };
 
-  const userToShow = searchInput.trim() ? searchUser : friends;
+  // const userToShow = searchInput.trim() ? searchUser : friends;
+  // const userToShow = searchUser.length > 0 ? searchUser : friends;
+  const userToShow = searchUser;
   return (
     <div className="add-friend-page">
       <div className="add-friend-card">
@@ -167,13 +183,6 @@ export default function AddFriend() {
         <div className="user-found">
           {loading ? (
             <p className="msg">Searching...</p>
-          ) : userToShow.length === 0 ? (
-            <>
-              <p className="msg">No users found.</p>
-              <div className="back-button" onClick={backToChatUsers}>
-                <IoArrowBackCircleOutline size={40} />
-              </div>
-            </>
           ) : (
             <>
               <div className="user-found-text">

@@ -96,3 +96,18 @@ export const deleteUser = async (req, res) => {
         });
     }
 };
+
+
+
+export const showAllUsers = async (req, res) => {
+    try {
+        const users = await User.find().select("-password");
+        if(!users || users.length === 0) {
+            return res.status(200).json([]);
+        }
+        res.status(200).json(users);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
