@@ -6,8 +6,8 @@ import {
   getFriends,
   getpendingFriends,
   acceptFriendRequest
-} from "../routControlers/friendControler.js";
-import { searchFriends } from "../routControlers/friendControler.js";
+} from "../routControlers/friendcontroler.js";
+import { searchFriends } from "../routControlers/friendcontroler.js";
 
 const router = express.Router();
 
