@@ -70,7 +70,7 @@ export default function Profile() {
   return (
     <div className="profile-page">
       <div className="profile-card">
-        <button className="back-btn" onClick={() => navigate(-1)}>
+        <button className="back-btnp" onClick={() => navigate(-1)}>
           <IoArrowBack size={24} />
         </button>
         <div className="profile-header">

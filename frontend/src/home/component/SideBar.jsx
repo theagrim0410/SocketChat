@@ -124,12 +124,14 @@ export default function Sidebar() {
           <button className="search-button" type="submit">
             <FaSearch />
           </button>
+          <div className = "profile-pic-container">
           <img
             onClick={() => navigate(`/profile/${authUser?._id}`)}
             src={authUser?.profilepic}
             alt="profile"
             className="profile-pic"
           />
+          </div>
         </form>
       </div>
       <div className="line"></div>
@@ -146,7 +148,7 @@ export default function Sidebar() {
                     <div
                       className={`avatar ${isOnline[index] ? "online" : "offline"}`}
                     >
-                      <div>
+                      <div className="profile-pic-container">
                         <img
                           src={user.profilepic}
                           alt="profile"

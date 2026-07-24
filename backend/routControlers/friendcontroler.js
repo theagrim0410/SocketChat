@@ -36,7 +36,7 @@ export const addFriend = async (req, res) => {
 
     if (alreadyFriend) {
       return res.status(400).json({
-        message: "Already friends.",
+        message: "Already sent a request.",
       });
     }
 
@@ -47,7 +47,7 @@ export const addFriend = async (req, res) => {
     });
 
     res.status(201).json({
-      message: "Friend added successfully.",
+      message: "Friend request sent.",
     });
   } catch (err) {
     console.log(err);

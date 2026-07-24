@@ -71,7 +71,7 @@ export default function Request() {
 
         <div className="search-bar">
           <div className="search-form">
-            <h2 style={{ color: "white", flex: 1 }}>Friend Requests</h2>
+            <h2 style={{ color: "white" , margin:" 0 50px" }}>Friend Requests</h2>
 
             <img
               src={authUser?.profilepic}

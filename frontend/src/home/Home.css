@@ -1,318 +1,198 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-html,
-body {
-  width: 100%;
-  min-height: 100%;
+* {
   margin: 0;
-  overflow-x: hidden;
-  /* overflow-y: auto; */
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* background: transparent; */
+  overflow: hidden;
+  animation: bgMove 15s ease infinite;
 }
 
 @keyframes bgMove {
   0% {
     background-position: 0% 50%;
   }
-
   50% {
     background-position: 100% 50%;
   }
-
   100% {
     background-position: 0% 50%;
   }
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-35px);
-  }
-}
-
-.home {
-  width: 100%;
-  padding: 45px;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.2),
-    0 0 30px rgba(255, 255, 255, 0.1);
-  /* height: 90vh; */
-  display: flex;
-  justify-content: center;
-  background-size: 400% 400%;
-  animation: bgMove 15s ease infinite;
-  overflow: hidden;
-  min-height: 100vh;
-  height: 100vh;
-  /* overflow-y: auto; */
-  /* overflow-x: hidden; */
-  animation: card 1s ease;
-  transition: 0.4s;
-  z-index: 10;
-}
-
-.right {
-  width: 100%;
-  height: 100vhS;
-  display: flex;
-}
 @keyframes card {
   from {
     opacity: 0;
     transform: translateY(40px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: auto;
+/* ========================= */
+
+.home {
+  width: 100%;
   height: 100vh;
-  flex-wrap: nowrap;
-  /* align-content: flex-start; */
-  gap: 54px;
+
+  padding: 25px;
+
+  display: flex;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.2),
+    0 0 30px rgba(255, 255, 255, 0.1);
+  animation: card 0.8s ease;
 }
 
-.line {
-  width: 3px;
+/* ========================= */
+
+.container {
+  width: 100%;
   height: 100%;
-  background: rgba(17, 0, 255, 0.3);
+
+  display: flex;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  transition: 0.35s;
 }
 
-@media (min-width: 1600px) {
-  body {
-    width: 100vw;
-    height: 100vh;
-  }
+.container:hover {
+  transform: translateY(-5px);
 
-  .home {
-    width: 90%;
-    max-width: 1700px;
-    padding: 60px;
-    border-radius: 35px;
-  }
-
-  .container {
-    width: 100%;
-    gap: 70px;
-  }
-
-  .right {
-    width: 100%;
-  }
-
-  .line {
-    width: 4px;
-  }
 }
 
-@media (max-width: 1400px) {
-  .home {
-    width: 95%;
-    padding: 40px;
-  }
+/* ========================= */
 
-  .container {
-    width: 100%;
-    gap: 40px;
-  }
+.left {
+  width: 32%;
+  min-width: 330px;
+  max-width: 420px;
+  padding: 20px;
+  backdrop-filter: blur(20px);
 
-  .line {
-    width: 3px;
-  }
+  transition: 0.3s;
+
+  overflow: hidden;
 }
 
-@media (max-width: 1200px) {
-  body {
-    width: 100vw;
-    min-height: 100vh;
-  }
 
-  .home {
-    width: 100%;
-    padding: 35px;
-    border-radius: 25px;
-  }
 
-  .container {
-    width: 100%;
-    gap: 30px;
-  }
+/* ========================= */
 
-  .right {
-    width: 100%;
-  }
-
-  .line {
-    width: 2px;
-  }
+.line2 {
+  width: 1px;
+  /* margin: 0 15px; */
+  background: rgba(25, 0, 255, 0.15);
 }
 
-@media (max-width: 992px) {
-  body {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    overflow-y: auto;
-  }
-  .profile-pic {
-    align-self: center;
-  }
-  .home {
-    width: 100%;
-    /* min-height: 100vh; */
-    /* height: auto; */
+/* ========================= */
 
-    min-height: 100vh;
-    height: auto;
-    overflow-y: auto;
-    overflow-x: hidden;
+.right {
+  flex: 1;
 
-    padding: 30px;
-    border-radius: 20px;
-  }
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  backdrop-filter: blur(20px);
 
-  .container {
-    width: 100%;
-    gap: 25px;
-  }
+  overflow: hidden;
 
-  .right {
-    width: 100%;
-    flex: 1;
-  }
-
-  .line {
-    width: 2px;
-  }
+  transition: 0.3s;
 }
 
-@media (max-width: 768px) {
-  body {
-    display: block;
-    overflow-y: auto;
-  }
 
-  .home {
-    width: 100%;
-    min-height: 100vh;
-    height: auto;
-    padding: 20px;
-    border-radius: 0;
-  }
 
-  .container {
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 20px;
-  }
+/* ========================= */
+/* Custom Scrollbar */
+/* ========================= */
 
-  .right {
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .line {
-    width: 100%;
-    height: 2px;
-  }
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-@media (max-width: 576px) {
-  body {
-    overflow-x: hidden;
-  }
-
-  .home {
-    width: 100%;
-    padding: 15px;
-    border-radius: 0;
-  }
-
-  .container {
-    width: 100%;
-    gap: 15px;
-  }
-
-  .right {
-    width: 100%;
-  }
-
-  .line {
-    width: 100%;
-    height: 1px;
-  }
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 8, 255, 0.25);
+  border-radius: 20px;
 }
 
-@media (max-width: 480px) {
-  .home {
-    padding: 12px;
-  }
-
-  .container {
-    gap: 12px;
-  }
-
-  .right {
-    width: 100%;
-  }
-
-  .line {
-    height: 1px;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 0, 251, 0.45);
 }
 
-@media (max-width: 375px) {
-  .home {
-    padding: 10px;
-  }
 
-  .container {
-    gap: 10px;
-  }
+/* ========================= */
+/* Mobile Layout */
+/* ========================= */
 
-  .line {
-    height: 1px;
-  }
+.mobile-sidebar,
+.mobile-chat{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    animation:slideIn .25s ease;
 }
 
-@media (max-width: 320px) {
-  .home {
-    padding: 8px;
-  }
+/* Sidebar */
 
-  .container {
-    gap: 8px;
-  }
+.mobile-sidebar{
+    background:rgba(255,255,255,.08);
 
-  .right {
-    width: 100%;
-  }
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 
-  .line {
-    display: none;
-  }
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+/* Chat */
+
+.mobile-chat{
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+/* Slide Animation */
+
+@keyframes slideIn{
+
+    from{
+        opacity:0;
+        transform:translateX(100%);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
 }
