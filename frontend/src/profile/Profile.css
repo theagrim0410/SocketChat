@@ -196,3 +196,67 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
+
+.profile-add {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+.profile-request {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+.friend-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.request-btn{
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background: #5844ef;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-friend {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background: #5844ef;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+.add-friend:hover {
+  background: #3b2bb7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(94, 76, 239, 0.35);
+}
+
+.add-friend:active {
+  transform: scale(0.97);
+}
+
+.add-friend-icon {
+  margin-right: 8px;
+  /* display : contents; */
+}

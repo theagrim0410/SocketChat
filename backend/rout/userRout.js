@@ -9,4 +9,5 @@ const router = express.Router();
 router.get('/search',isLogin , getUserBySearch);
 router.get('/currentchatters', isLogin, getCurrentChatters);
 router.delete('/delete/:id', deleteUser);
+
 export default router;

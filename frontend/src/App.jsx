@@ -7,6 +7,8 @@ import Register from "./register/Register.jsx";
 import Home from "./home/Home.jsx";
 import Profile from "./profile/Profile.jsx";
 import  VerifyUser  from "./utils/VerifyUser.jsx";
+import AddFriend from "./addfriends/AddFriend.jsx";
+import Request from "./addfriends/Request.jsx";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/home" element={<Home />} />
         </Route>
         <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/add-friend" element={<AddFriend />} />
+        <Route path="/friend-requests" element={<Request/>} />
       </Routes>
     </BrowserRouter>
   );

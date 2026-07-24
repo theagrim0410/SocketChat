@@ -1,0 +1,301 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.add-friend-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-friend-card {
+  width: 100%;
+  max-width: 650px;
+  height: 90vh;
+  background: rgba(20, 20, 30, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+.back-btn {
+  width: 45px;
+  height: 45px;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: .3s;
+}
+
+.back-btn:hover {
+  transform: translateX(-4px);
+  color: #7c5cff;
+}
+
+/* Search */
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-input {
+  flex: 1;
+  height: 45px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  padding: 0 15px;
+  font-size: 15px;
+}
+
+.search-button {
+  width: 50px;
+  height: 45px;
+  border: none;
+  border-radius: 12px;
+  background: #4f46e5;
+  color: white;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.search-button:hover {
+  background: #3730a3;
+}
+
+.profile-pic {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,.15);
+  margin: 18px 0;
+}
+
+/* User List */
+
+.user-found {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.user-found::-webkit-scrollbar {
+  width: 5px;
+}
+
+.user-found::-webkit-scrollbar-thumb {
+  background: #4f46e5;
+  border-radius: 20px;
+}
+
+.user-card {
+  margin-bottom: 12px;
+}
+
+.user-card2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  padding: 12px 15px;
+  transition: .25s;
+}
+
+.user-card2:hover {
+  background: rgba(79,70,229,.15);
+  transform: translateY(-2px);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.avatar.online::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 2px solid white;
+  position: absolute;
+  bottom: 2px;
+  left: 36px;
+}
+
+.profile-pic2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.user-info small {
+  color: #c9c9c9;
+  font-size: 12px;
+}
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: #4f46e5;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.add-btn:hover {
+  background: #3730a3;
+}
+
+.add-btn:disabled {
+  background: #6b7280;
+  cursor: not-allowed;
+}
+
+.remove-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: #ef4444;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.remove-btn:hover {
+  background: #b91c1c;
+}
+
+.add-btn:disabled {
+  background: #6b7280;
+  cursor: not-allowed;
+}
+
+.remove-btn:disabled {
+  background: #6b7280;
+  cursor: not-allowed;
+}
+
+.msg {
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.back-button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: #4f46e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 0;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+}
+
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width:768px){
+
+  .add-friend-card{
+    width:95%;
+    height:95vh;
+    padding:15px;
+  }
+
+  .search-form{
+    flex-wrap:wrap;
+  }
+
+  .search-input{
+    width:100%;
+  }
+
+  .profile-pic{
+    display:none;
+  }
+
+  .user-card2{
+    flex-wrap:wrap;
+    gap:15px;
+  }
+
+  .add-btn{
+    width:100%;
+    justify-content:center;
+  }
+}
+
+@media (max-width:480px){
+
+  .profile-pic2{
+    width:45px;
+    height:45px;
+  }
+
+  .user-name{
+    font-size:14px;
+  }
+
+  .add-btn{
+    font-size:13px;
+    padding:8px 14px;
+  }
+
+  .search-input{
+    font-size:14px;
+  }
+}

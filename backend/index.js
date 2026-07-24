@@ -5,6 +5,7 @@ import authRouter from './rout/authUser.js';
 import cookieParser from 'cookie-parser';
 import messageRouter from './rout/messageRout.js';
 import userRouter from './rout/userRout.js';
+import friendRouter from './rout/friendRout.js';
 import path from 'path';
 import {app, server} from './Socket/socket.js';
 
@@ -18,6 +19,7 @@ app.use(cookieParser());
 app.use('/api/auth',authRouter);
 app.use('/api/message', messageRouter);
 app.use('/api/user', userRouter);
+app.use('/api/friend', friendRouter);
 
 app.use(express.static(path.join(__dirname, 'frontend/dist')));
 

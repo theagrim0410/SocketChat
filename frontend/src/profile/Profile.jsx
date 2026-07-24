@@ -1,17 +1,20 @@
 import { useAuth } from "../context/AuthContext";
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
-import { IoArrowBack } from "react-icons/io5";
+import { IoAdd, IoArrowBack } from "react-icons/io5";
 import axios from "axios";
 import { toast } from "react-toastify";
 // import jwtStorage from "../utils/jwtStorage.js";
 import { BiLogOut } from "react-icons/bi";
 import { useState } from "react";
+import { FaUserFriends } from "react-icons/fa";
 
 export default function Profile() {
   const { authUser, setAuthUser } = useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+
+
   const handleDeleteAccount = async () => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete your account? This action cannot be undone.",
@@ -78,11 +81,21 @@ export default function Profile() {
           />
           <h2>{authUser?.fullname}</h2>
         </div>
+          <div className="friend-actions">
+         <div className="profile-add">
+            <button className ="add-friend" onClick = {() => {navigate("/add-friend")}}> <IoAdd  className="add-friend-icon" size={30}/>Add Friend</button>
+          </div>
+          <div className="profile-request">
+            <button className="request-btn" onClick={() => navigate("/friend-requests")}><FaUserFriends className="request-icon"  size={30}/>Friend Requested</button>
+          </div>
+          </div>
+          
         <div className="profile-info">
           <div className="profile-item">
             <span>User ID</span>
             <p>{authUser?._id}</p>
           </div>
+         
 
           <div className="profile-item">
             <span>Username</span>

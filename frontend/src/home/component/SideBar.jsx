@@ -6,7 +6,7 @@ import { FaSearch } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
-import { BiLogOut } from "react-icons/bi";
+// import { BiLogOut } from "react-icons/bi";
 import useConversation from "../../zustans/useConversation.js";
 import { useSocketContext } from "../../context/SocketContext.jsx";
 
@@ -53,7 +53,6 @@ export default function Sidebar() {
         const data = chatUsers.data;
         if (data.success === false) {
           setLoading(false);
-          // console.error(data.message);
           return;
         }
         setChatUser(data);
@@ -78,10 +77,12 @@ export default function Sidebar() {
       toast.error("Enter a username");
       return;
     }
+    console.log("Searching for:", searchInput);
     setLoading(true);
     try {
-      const search = await axios.get(`api/user/search?search=${searchInput}`);
+      const search = await axios.get(`api/friend/search?search=${searchInput}`);
       const data = search.data;
+      console.log("Search Data:", data);
       if (data.success === false) {
         setLoading(false);
         // console.error(data.message);
