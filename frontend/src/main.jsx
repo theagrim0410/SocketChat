@@ -4,13 +4,16 @@ import './index.css'
 import App from './App.jsx'
 import { AuthContextProvider } from './context/AuthContext.jsx'
 import { SocketContextProvider } from './context/SocketContext.jsx'
+import  ErrorBoundary  from './utils/Error.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <AuthContextProvider>
-    <SocketContextProvider>
+  <ErrorBoundary>
+    <AuthContextProvider>
+      <SocketContextProvider>
       <StrictMode>
         <App />
       </StrictMode>
     </SocketContextProvider>
-  </AuthContextProvider>,
+  </AuthContextProvider>
+</ErrorBoundary>
 )

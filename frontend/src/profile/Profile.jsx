@@ -2,10 +2,67 @@ import { useAuth } from "../context/AuthContext";
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
+import axios from "axios";
+import { toast } from "react-toastify";
+// import jwtStorage from "../utils/jwtStorage.js";
+import { BiLogOut } from "react-icons/bi";
+import { useState } from "react";
 
 export default function Profile() {
-  const { authUser } = useAuth();
+  const { authUser, setAuthUser } = useAuth();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const handleDeleteAccount = async () => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete your account? This action cannot be undone.",
+    );
+    if (!confirmDelete) {
+      toast.info("Account deletion cancelled.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const userId = authUser?._id;
+      if (!userId) {
+        toast.error("User ID is required to delete the account.");
+        return;
+      }
+      const response = await axios.delete(`/api/user/delete/${userId}`);
+      if (response.status === 200) {
+        toast.success("Account deleted successfully.");
+        setTimeout(() => {
+          localStorage.removeItem("LalliChat");
+          setAuthUser(null);
+          setLoading(false);
+          navigate("/");
+        }, 1200);
+      }
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+      toast.error("Failed to delete account. Please try again.");
+    }
+  };
+
+  const logout = async () => {
+    const confirmLogout = window.confirm("Are you sure you want to logout?");
+    if (!confirmLogout) {
+      toast.info("Logout cancelled");
+      return;
+    }
+    setLoading(true);
+    try {
+      await axios.post("/api/auth/logout");
+      toast.success("Logging out...");
+      localStorage.removeItem("LalliChat");
+      setAuthUser(null);
+      setLoading(false);
+      navigate("/");
+    } catch (err) {
+      setLoading(false);
+      console.error(err);
+    }
+  };
 
   return (
     <div className="profile-page">
@@ -34,6 +91,23 @@ export default function Profile() {
           <div className="profile-item">
             <span>Email</span>
             <p>{authUser?.email}</p>
+          </div>
+        </div>
+        <div className="profile-actions">
+          <div className="dlt-account">
+            <button
+              className="delete-account-btn"
+              onClick={handleDeleteAccount}
+            >
+              Delete Account
+            </button>
+          </div>
+
+          <div className="logout-container">
+            <button className="logout-btn" onClick={logout}>
+              <BiLogOut className="logout-icon" />
+              <span>Logout</span>
+            </button>
           </div>
         </div>
       </div>

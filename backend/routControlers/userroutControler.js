@@ -60,6 +60,7 @@ export const userLogin = async (req,res) =>{
             profilepic:user.profilepic,
             message : "login successful",
             success:true,
+            token: req.cookies.jwt
         })
     }
      catch(err){

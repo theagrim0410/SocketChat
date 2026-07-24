@@ -71,25 +71,6 @@ export default function Sidebar() {
     setSearchInput("");
   };
 
-  const logout = async () => {
-    const confirmLogout = window.confirm("Are you sure you want to logout?");
-    if (!confirmLogout) {
-      toast.info("Logout cancelled");
-      return;
-    }
-    setLoading(true);
-    try {
-      await axios.post("/api/auth/logout");
-      toast.success("Logging out...");
-      localStorage.removeItem("LalliChat");
-      setAuthUser(null);
-      setLoading(false);
-      navigate("/");
-    } catch (err) {
-      setLoading(false);
-      console.error(err);
-    }
-  };
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
@@ -226,12 +207,6 @@ export default function Sidebar() {
                   ))}
                 </>
               )}
-            </div>
-            <div className="logout-container">
-              <button className="logout-btn" onClick={logout}>
-                <BiLogOut className="logout-icon" />
-                <span>Logout</span>
-              </button>
             </div>
           </div>
         </>

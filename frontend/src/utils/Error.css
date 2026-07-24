@@ -1,0 +1,45 @@
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.reload-btn {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background: #5844ef;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.action-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.reload-btn:hover {
+  background: #3b2bb7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(94, 76, 239, 0.35);
+}
+
+.reload-btn:active {
+  transform: scale(0.97);
+}
+
+.error-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+

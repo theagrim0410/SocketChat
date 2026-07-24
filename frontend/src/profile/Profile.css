@@ -109,3 +109,90 @@ body {
   border-radius: 8px;
   color: #000;
 }
+
+
+.logout-container {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logout-btn {
+  width: 100%;
+  max-width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 12px 18px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+
+  background: #5844ef;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(239, 68, 68, 0.35);
+}
+
+.logout-btn:active {
+  transform: scale(0.97);
+}
+
+.logout-icon {
+  font-size: 24px;
+}
+
+.profile-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.profile-account {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.profile-account:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(185, 28, 28, 0.35);
+}
+
+.profile-account:active {
+  transform: scale(0.97);
+}
+
+.delete-account-btn {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}

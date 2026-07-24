@@ -1,5 +1,6 @@
 import User from "../Models/userModels.js";
 import Conversation from "../Models/conversationModels.js";
+import Message from "../Models/messageSchema.js";
 
 export const getUserBySearch = async (req, res) => {
   try {
@@ -61,3 +62,37 @@ export const getCurrentChatters = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 }
+
+
+export const deleteUser = async (req, res) => {
+    try {
+        // const userId = req.user.id;
+        const userToDeleteId = req.params.id;
+        if (!userToDeleteId) {
+            return res.status(400).json({
+                success: false,
+                message: "User ID is required",
+            });
+        }
+        await User.findByIdAndDelete(userToDeleteId);
+        await Conversation.deleteMany({
+            participants: userToDeleteId,
+        });
+        await Message.deleteMany({
+            $or: [
+                { sender: userToDeleteId },
+                { receiver: userToDeleteId },
+            ],
+        });
+        res.status(200).json({
+            success: true,
+            message: "User deleted successfully",
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Internal server error",
+        });
+    }
+};
