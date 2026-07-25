@@ -6,7 +6,7 @@ export const addFriend = async (req, res) => {
     // const userId = req.user._id;
     const userId = req.user?.id;
     if (!userId) {
-      console.log("User ID is not available in the request object.");
+      // console.log("User ID is not available in the request object.");
       return res.status(401).json({
         message: "Unauthorized user",
       });
@@ -61,7 +61,7 @@ export const removeFriend = async (req, res) => {
   try {
     const userId = req.user.id;
     const { friendId } = req.params;
-    console.log("userId:", userId, "friendId:", friendId);
+    // console.log("userId:", userId, "friendId:", friendId);
     await Friend.findOneAndDelete({
       $or: [
         { userId, friendId },
@@ -90,7 +90,7 @@ export const getFriends = async (req, res) => {
     })
       .populate("userId", "-password")
       .populate("friendId", "-password");
-    console.log("Friends:", friends);
+    // console.log("Friends:", friends);
     const friendList = friends.map((friend) => {
       if (friend.userId._id.toString() === userId.toString()) {
         return friend.friendId;
@@ -119,7 +119,7 @@ export const getpendingFriends = async (req, res) => {
     })
       .populate("userId", "-password")
       .populate("friendId", "-password");
-    console.log("Friends:", friends);
+    // console.log("Friends:", friends);
     const friendList = friends.map((friend) => {
       if (friend.userId._id.toString() === userId.toString()) {
         return friend.friendId;

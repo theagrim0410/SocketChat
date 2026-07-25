@@ -445,3 +445,95 @@ body{
 
     color:#4338ca;
 }
+
+
+
+
+@media (max-width: 480px){
+
+  .add-friend-card{
+    padding:12px;
+  }
+
+  .search-input{
+    font-size:13px;
+    height:40px;
+  }
+
+  .search-button{
+    width:40px;
+    height:40px;
+  }
+
+  .profile-pic{
+    width:38px;
+    height:38px;
+  }
+
+  .profile-pic2{
+    width:42px;
+    height:42px;
+  }
+
+  .user-card2{
+    padding:10px;
+  }
+
+  .user-name{
+    font-size:13px;
+  }
+
+  .user-info small{
+    font-size:10px;
+  }
+
+  .add-btn,
+  .remove-btn{
+    padding:7px 10px;
+    min-width:38px;
+    height:38px;
+  }
+
+  .back-btn{
+    width:35px;
+    height:35px;
+  }
+}
+
+
+/* ========================= */
+/* Very Small Phones */
+/* ========================= */
+
+@media (max-width: 360px){
+
+  .search-input{
+    font-size:12px;
+    padding:0 10px;
+  }
+
+  .user-card2{
+    gap:8px;
+    padding:8px;
+  }
+
+  .profile-pic2{
+    width:38px;
+    height:38px;
+  }
+
+  .user-name{
+    font-size:12px;
+  }
+
+  .user-info small{
+    font-size:9px;
+  }
+
+  .add-btn,
+  .remove-btn{
+    min-width:34px;
+    height:34px;
+    padding:6px 8px;
+  }
+}

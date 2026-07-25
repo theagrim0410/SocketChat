@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext.jsx";
+import "./Register.css";
 
 export default function Register() {
   const navigate = useNavigate();

@@ -1,25 +1,57 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Poppins, sans-serif;
+html,
+body,
+#root{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
 }
 
-body {
-  overflow: hidden;
-}
+
 
 .login-page {
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
   position: relative;
+
+  padding: 20px;
+
   background-size: 400% 400%;
   animation: bgMove 15s ease infinite;
-  overflow: hidden;
+
+  overflow-y: auto;
+}
+.select-gender {
+  background: bottom;
+  border: blanchedalmond 2px;
+  border-radius: 3px;
+  width: 100%;
+  padding: 15px 18px;
+
+  border: none;
+  outline: none;
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.18);
+
+  color: white;
+
+  font-size: 15px;
+
+  appearance: none;
+
+  font-size: 16px;
+}
+
+.select-gender option {
+  color: black;
 }
 
 @keyframes bgMove {
@@ -83,12 +115,15 @@ body {
 
 .login-card {
   position: relative;
-  width: 430px;
-  padding: 45px;
+
+  width: 100%;
+  max-width: 430px;
+
+  padding: 35px;
+
   border-radius: 30px;
 
   background: rgba(255, 255, 255, 0.14);
-
   backdrop-filter: blur(18px);
 
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -97,16 +132,11 @@ body {
     0 15px 35px rgba(0, 0, 0, 0.2),
     0 0 30px rgba(255, 255, 255, 0.1);
 
-  animation: card 1s ease;
-  transition: 0.4s;
+  animation: card 0.8s ease;
+
   z-index: 10;
 }
 
-.login-card:hover {
-  transform: translateY(-8px) scale(1.02);
-
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
-}
 
 @keyframes card {
   from {
@@ -156,11 +186,11 @@ p {
   text-align: center;
   color: white;
   opacity: 0.85;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .input-group input {
@@ -225,7 +255,7 @@ button:active {
 .divider {
   display: flex;
   align-items: center;
-  margin: 28px 0;
+  margin: 10px -8px;
 }
 
 .divider::before,
@@ -248,7 +278,7 @@ button:active {
 }
 
 .switch {
-  margin-top: 28px;
+  margin-top: 0px;
 
   text-align: center;
 
