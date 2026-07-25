@@ -23,11 +23,13 @@ export default function Request() {
 
   const fetchRequests = async () => {
     try {
+      setLoading(true);
       const { data } = await axios.get("/api/friend/getpfs", {
         withCredentials: true,
       });
 
       setRequests(data);
+      setLoading(false);
     } catch (err) {
       console.log(err);
       toast.error("Failed to load requests");
@@ -38,6 +40,7 @@ export default function Request() {
 
   const handleAccept = async (friendId) => {
     try {
+      setLoading(true);
       const { data } = await axios.put(
         `/api/friend/accept/${friendId}`,
         {},
@@ -46,10 +49,17 @@ export default function Request() {
         },
       );
 
-      toast.success(data.message);
 
-      setRequests((prev) => prev.filter((user) => user._id !== friendId));
+      if (!data.message) {
+        toast.error("Failed to accept friend request");
+        setLoading(false);
+        return;
+      }
+
+      toast.success(data.message);
+      fetchRequests();
     } catch (err) {
+      setLoading(false);
       console.log(err);
 
       if (err.response) {
@@ -73,7 +83,7 @@ export default function Request() {
       }
 
       toast.success(data.message);
-      setRequests((prev) => prev.filter((user) => user._id !== friendId));
+      fetchRequests();
       setLoading(false);
     }
     catch (err) {
