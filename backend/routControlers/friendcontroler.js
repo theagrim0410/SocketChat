@@ -219,3 +219,31 @@ export const searchFriends = async (req, res) => {
     });
   }
 };
+
+
+export const removeFriendRequest = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { friendId } = req.params;
+    const request = await Friend.findOneAndDelete({
+      userId: friendId,
+      friendId: userId,
+      status: { $in: ["pending", "accepted"] },
+    });
+    if (!request) {
+      return res.status(404).json({
+        message: "Friend request not found.",
+      });
+    }
+    res.status(200).json({
+      message: "Friend request removed.",
+      request,
+    });
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Internal Server Error"
+    });
+  }
+}

@@ -1,9 +1,10 @@
-import "./Login.css";
+// import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext.jsx";
+import "../register/Register.css";
 
 export default function Login() {
   const navigate = useNavigate();

@@ -8,6 +8,8 @@ import axios from "axios";
 import { useRef } from "react";
 import { useSocketContext } from "../../context/SocketContext.jsx";
 import notify from "../../assets/sound/sound.mp3";
+import { IoTrash } from "react-icons/io5";
+import { toast } from "react-toastify";
 // import { set } from "mongoose";
 
 export default function MessageContainer() {
@@ -114,6 +116,27 @@ useEffect(() => {
     }
   };
 
+  const handledeleteConversation = async () => {
+    try {
+      console.log("chating with user ID:", selectedConversation?._id);
+      console.log("auth user ID:", authUser?._id);
+      const res = await axios.delete(
+        `/api/message/deleteconvo/${selectedConversation?._id}`,
+      );
+      const data = await res.data;
+      if (data.success == false) {
+        toast.error(data.message);
+        console.error("Error deleting conversation:", data.message);
+      }
+      setSelectedConversation(null);
+      setMessages([]);
+      toast.success(data.message);
+    }
+    catch (error) {
+      console.error("Error deleting conversation:", error);
+    }
+  }
+
   return (
     <div className="message-container">
       {selectedConversation === null ? (
@@ -205,6 +228,7 @@ useEffect(() => {
                 ))}
             </div>
             <form className="conversation-input" onSubmit={handleSubmit}>
+              <div className = "delete-convo" onClick={handledeleteConversation}> <IoTrash size={30} /></div>
               <div className="input-container">
                 <input
                   value={sendData}
@@ -218,7 +242,7 @@ useEffect(() => {
                   {sending ? (
                     <div className="loading-spinner2"></div>
                   ) : (
-                    <IoSend size={20} className="send-icon" />
+                    <IoSend size={30} className="send-icon" />
                   )}
                 </button>
               </div>

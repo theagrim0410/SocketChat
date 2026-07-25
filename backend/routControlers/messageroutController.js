@@ -64,3 +64,26 @@ export const getMessages = async (req,res) =>{
         console.log(err);
     }
 }
+
+
+export const deleteConversation = async (req,res) =>{
+    try{
+        const {id : receiverId} = req.params;
+        const senderId = req.user._id;
+        const chats = await Conversation.findOneAndDelete({
+            participants:{$all:[senderId,receiverId]}
+        });
+        if(!chats){
+            return res.status(404).send({success:false,message:"No conversation found"});
+        }
+        const deletedMessages = await Message.deleteMany({conversationId:chats._id});
+        if(!deletedMessages){
+            return res.status(404).send({success:false,message:"No messages found"});
+        }
+        res.status(200).send({success:true,message:"Conversation deleted successfully"});
+    }
+    catch(err){
+        res.status(500).send({success:false,message:"Internal Server Error"});
+        console.log(err);
+    }
+}

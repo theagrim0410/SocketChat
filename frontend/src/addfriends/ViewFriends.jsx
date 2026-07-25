@@ -1,54 +1,56 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
+import { IoRemove } from "react-icons/io5";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useSocketContext } from "../context/SocketContext.jsx";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "./AddFriend.css";
 
-export default function Request() {
+export default function ViewFriends() {
   const navigate = useNavigate();
   const { authUser } = useAuth();
   const { onlineUsers } = useSocketContext();
 
-  const [requests, setRequests] = useState([]);
+  const [friends, setFriends] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const isUserOnline = (id) => onlineUsers.includes(id);
 
   useEffect(() => {
-    fetchRequests();
+    fetchFriends();
   }, []);
 
-  const fetchRequests = async () => {
+  const fetchFriends = async () => {
     try {
-      const { data } = await axios.get("/api/friend/getpfs", {
+      const { data } = await axios.get("/api/friend/getfs", {
         withCredentials: true,
       });
 
-      setRequests(data);
+      setFriends(data || []);
     } catch (err) {
       console.log(err);
-      toast.error("Failed to load requests");
+      toast.error("Failed to load friends");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleAccept = async (friendId) => {
+  const handleRemoveFriend = async (friendId) => {
     try {
-      const { data } = await axios.put(
-        `/api/friend/accept/${friendId}`,
-        {},
+      const { data } = await axios.delete(
+        `/api/friend/remove/${friendId}`,
         {
           withCredentials: true,
-        },
+        }
       );
 
       toast.success(data.message);
 
-      setRequests((prev) => prev.filter((user) => user._id !== friendId));
+      setFriends((prev) =>
+        prev.filter((friend) => friend._id !== friendId)
+      );
     } catch (err) {
       console.log(err);
 
@@ -60,29 +62,6 @@ export default function Request() {
     }
   };
 
-  const handleReject = async (friendId) => {
-    try {
-      setLoading(true);
-      const { data } = await axios.delete(`/api/friend/reject/${friendId}`, {
-        withCredentials: true,
-      });
-      if (!data.message) {
-        toast.error("Failed to reject friend request");
-        setLoading(false);
-        return;
-      }
-
-      toast.success(data.message);
-      setRequests((prev) => prev.filter((user) => user._id !== friendId));
-      setLoading(false);
-    }
-    catch (err) {
-      setLoading(false);
-      console.log(err);
-      toast.error("Failed to reject friend request");
-    }
-  }
-
   return (
     <div className="add-friend-page">
       <div className="add-friend-card">
@@ -92,9 +71,7 @@ export default function Request() {
 
         <div className="search-bar">
           <div className="search-form">
-            <h2 style={{ color: "white", margin: " 0 50px" }}>
-              Friend Requests
-            </h2>
+            <h2 style={{ color: "white", flex: 1 }}>My Friends</h2>
 
             <img
               src={authUser?.profilepic}
@@ -109,12 +86,12 @@ export default function Request() {
 
         <div className="user-found">
           {loading ? (
-            <p className="msg">Loading...</p>
-          ) : requests.length === 0 ? (
-            <p className="msg">No pending friend requests.</p>
+            <p className="msg">Loading friends...</p>
+          ) : friends.length === 0 ? (
+            <p className="msg">You don't have any friends yet.</p>
           ) : (
             <div className="user-found-text">
-              {requests.map((user) => (
+              {friends.map((user) => (
                 <div key={user._id} className="user-card">
                   <div className="user-card2">
                     <div
@@ -133,17 +110,12 @@ export default function Request() {
                       <p className="user-name">{user.fullname}</p>
                       <small>@{user.username}</small>
                     </div>
+
                     <button
-                      className="reject-btn"
-                      onClick={() => handleReject(user._id)}
+                      className="remove-btn"
+                      onClick={() => handleRemoveFriend(user._id)}
                     >
-                      Reject
-                    </button>
-                    <button
-                      className="add-btn"
-                      onClick={() => handleAccept(user._id)}
-                    >
-                      Accept
+                      <IoRemove size={20} />
                     </button>
                   </div>
                 </div>

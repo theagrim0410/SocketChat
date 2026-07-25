@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import { BiLogOut } from "react-icons/bi";
 import { useState } from "react";
 import { FaUserFriends } from "react-icons/fa";
+import { FaUsersViewfinder } from "react-icons/fa6";
+
 
 export default function Profile() {
   const { authUser, setAuthUser } = useAuth();
@@ -88,6 +90,10 @@ export default function Profile() {
           <div className="profile-request">
             <button className="request-btn" onClick={() => navigate("/friend-requests")}><FaUserFriends className="request-icon"  size={30}/>Friend Requested</button>
           </div>
+          </div>
+
+          <div className="friends-action">
+            <button className="friends-btn" onClick={() => navigate("/view-friends")}><FaUsersViewfinder  className="request-icon" size={30}/>View Friends</button>
           </div>
           
         <div className="profile-info">

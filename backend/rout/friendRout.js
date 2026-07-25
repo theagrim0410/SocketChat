@@ -5,7 +5,8 @@ import {
   removeFriend,
   getFriends,
   getpendingFriends,
-  acceptFriendRequest
+  acceptFriendRequest,
+  removeFriendRequest
 } from "../routControlers/friendcontroler.js";
 import { searchFriends } from "../routControlers/friendcontroler.js";
 
@@ -17,5 +18,5 @@ router.get("/getfs", isLogin, getFriends);
 router.get("/search", isLogin, searchFriends);
 router.get("/getpfs", isLogin, getpendingFriends);
 router.put("/accept/:friendId", isLogin, acceptFriendRequest);
-
+router.delete("/reject/:friendId", isLogin, removeFriendRequest);
 export default router;
