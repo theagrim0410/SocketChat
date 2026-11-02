@@ -113,7 +113,3 @@ frontend/
   src/             React application
   public/          Static assets
 ```
-
-## License
-
-This project is released under the ISC license.
